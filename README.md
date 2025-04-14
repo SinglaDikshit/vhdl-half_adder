@@ -89,16 +89,11 @@ exit
 
 ## 🔍 Compare Two Verilog Files
 
-You can compare the behavioral and synthesized Verilog files using tools like `diff`, or a GUI-based diff viewer:
+You can compare the behavioral and synthesized Verilog files using a GUI-based diff viewer like `vimdiff`:
 
 ```bash
-# Basic terminal diff
-diff ha_synth.v ha_synth3.v
+# GUI-based viewer vimdiff
+vimdiff ha_synth.v ha_synth3.v
 ```
-
-Or use a visual comparison tool like:
-- `meld` (GUI)
-- `vscode` with extension support
-- `vimdiff` (terminal GUI)
 
 ---
