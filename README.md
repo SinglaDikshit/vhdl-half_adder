@@ -8,7 +8,6 @@ This README explains how to work with the Half Adder (HA) design using **IIC-OSI
 
 Clone the following files into your working directory:
 ```
-/foss/designs/SKY/ha
 ├── ha.vhdl
 ├── ha_tb.vhdl
 ```
@@ -49,10 +48,12 @@ You can use GHDL to convert VHDL into Verilog:
 ghdl -a ha.vhdl
 ghdl synth --out=verilog ha > ha_synth.v
 ```
-
+Now you will find the ha_synth.v is generated in directory. you can view it using the command `less ha_synth.v`
 ---
 
 ## ⚙️ Gate-Level Synthesis with Yosys
+
+type below command
 
 ```bash
 yosys
@@ -67,33 +68,29 @@ read_verilog ha_synth.v
 # Convert behavioral logic into RTL
 proc
 
-# Optional: visualize the current state
+# Optional: visualize the current state,
 show -colors 3
-
-# Map to generic cells
-techmap
-
-# Save intermediate version
-write_verilog -noattr ha_synth2.v
-
-# Logic optimization using standard cell library
-abc -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
-
-# Final gate-level version
-write_verilog -noattr ha_synth3.v
-
-exit
 ```
+After running one can see the netlist as shown below.
+
+![vdfvsdf](images/netlist.png)
 
 ---
+In the results folder, there is a ha_tb.v file which I wrote for simulation. 
 
-## 🔍 Compare Two Verilog Files
+Then we check the wave to verify if they are matching we can use the following commands
 
-You can compare the behavioral and synthesized Verilog files using a GUI-based diff viewer like `vimdiff`:
-
-```bash
-# GUI-based viewer vimdiff
-vimdiff ha_synth.v ha_synth3.v
 ```
+iverilog -o ha_tb.vvp ha_tb.v ha_synth.v
+
+vvp ha_tb.vvp
+
+gtkwave ha_tb.vvp
+
+```
+
+![vdfvsdf](images/gtkwave.png)
+
+I have also included .vcd file
 
 ---
