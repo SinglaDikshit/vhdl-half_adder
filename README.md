@@ -73,7 +73,7 @@ show -colors 3
 ```
 After running one can see the netlist as shown below.
 
-![vdfvsdf](images/netlist.png)
+![vdfvsdf](results/netlist.png)
 
 ---
 In the results folder, there is a ha_tb.v file which I wrote for simulation. 
@@ -89,7 +89,7 @@ gtkwave ha_tb.vvp
 
 ```
 
-![vdfvsdf](images/gtkwave.png)
+![vdfvsdf](results/gtkwave.png)
 
 I have also included .vcd file
 
